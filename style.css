@@ -1,5 +1,6 @@
 /* ─── CSS Variables ─── */
 :root {
+  color-scheme: dark;
   --bg: #111111;
   --bg-glow: radial-gradient(ellipse 80% 40% at 50% 110%, rgba(60, 90, 180, 0.18) 0%, transparent 70%);
   --text: #cccccc;
