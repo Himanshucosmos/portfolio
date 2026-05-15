@@ -133,13 +133,11 @@ window.initPageData = () => {
         line === '' ? '<br>' : `<span>${line}</span>`
       ).join('\n      ');
       const divider = index < siteData.poetry.length - 1 ? '<hr class="poem-divider" />' : '';
-      // Expand first one by default
-      const displayStyle = index === 0 ? 'block' : 'none';
       return `
       <div class="poem-entry" id="poem-${p.title.replace(/\s+/g, '-')}">
-        <h2 class="poem-title" style="cursor: pointer;">[ ${p.title} ]</h2>
+        <h2 class="poem-title">[ ${p.title} ]</h2>
         <div class="poem-date">${p.date}</div>
-        <div class="poem-body" style="display: ${displayStyle}; margin-top: 20px;">
+        <div class="poem-body" style="margin-top: 20px;">
           ${body}
         </div>
       </div>
@@ -156,24 +154,15 @@ window.initPageData = () => {
       <div class="poems-list">${poems}</div>
     `;
 
-    // Add click listeners for accordion
-    poetryList.querySelectorAll('.poem-title').forEach(title => {
-      title.onclick = () => {
-        const entry = title.closest('.poem-entry');
-        const body = entry.querySelector('.poem-body');
-        const isHidden = body.style.display === 'none';
-        body.style.display = isHidden ? 'block' : 'none';
-      };
-    });
-
-    // Make archive links also expand the poem
+    // Ensure archive links work smoothly with the container
     poetryList.querySelectorAll('.archive-links a').forEach(link => {
       link.addEventListener('click', (e) => {
         const targetId = link.getAttribute('href').substring(1);
-        const targetEntry = document.getElementById(targetId);
-        if (targetEntry) {
-          const body = targetEntry.querySelector('.poem-body');
-          body.style.display = 'block';
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, null, `#${targetId}`);
         }
       });
     });
