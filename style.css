@@ -872,9 +872,13 @@ main {
     display: none;
   }
 
-  /* Hide side text on mobile — no room */
+  /* Show side text on mobile — floating above on the right edge */
   .side-text {
-    display: none;
+    display: block;
+    font-size: 8px;
+    right: -32px; /* Pull it slightly more to the edge */
+    opacity: 0.4;
+    z-index: 1000;
   }
 
   /* Index layout collapses */

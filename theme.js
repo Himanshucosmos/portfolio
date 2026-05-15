@@ -27,17 +27,25 @@ const musicBtn = document.getElementById('musicToggle');
 const bgMusic = document.getElementById('bgMusic');
 
 const playlist = [
-  '09. 楽しい入れ替わりの日常 ～スパークル ピアノver.～.mp3',
-  '02. 前前前世 VIOLIN ROCK！ ～バイオリンロックver.～.mp3'
+  'music1.mp3',
+  'music2.mp3'
 ];
 let currentSongIndex = 0;
 
+function loadSong(index) {
+  if (!bgMusic) return;
+  bgMusic.src = playlist[index];
+  bgMusic.load();
+}
+
 if (bgMusic) {
-  bgMusic.src = playlist[currentSongIndex];
+  // Set initial src so it's ready on first click
+  loadSong(currentSongIndex);
+  
   bgMusic.addEventListener('ended', () => {
     currentSongIndex = (currentSongIndex + 1) % playlist.length;
-    bgMusic.src = playlist[currentSongIndex];
-    bgMusic.play().catch(e => console.log('Audio play failed', e));
+    loadSong(currentSongIndex);
+    bgMusic.play().catch(() => {});
   });
 }
 
@@ -47,7 +55,16 @@ if (musicBtn) {
     musicOn = !musicOn;
     if (musicOn) {
       musicBtn.textContent = 'good taste right :)';
-      if (bgMusic) bgMusic.play().catch(e => console.log('Audio play failed', e));
+      if (bgMusic) {
+        bgMusic.play().catch(() => {
+          // Retry loading if play failed (common on mobile)
+          loadSong(currentSongIndex);
+          bgMusic.play().catch(() => {
+            musicBtn.textContent = 'music?';
+            musicOn = false;
+          });
+        });
+      }
     } else {
       musicBtn.textContent = 'music?';
       if (bgMusic) bgMusic.pause();
