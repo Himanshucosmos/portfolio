@@ -2,33 +2,33 @@ const siteData = {
   projects: [
     {
       title: "bundlebuild_",
-      link: "https://github.com/Himanshucosmos/bundlebuild_",
+      link: "https://bundlebuild.vercel.app/",
       image: "bundlebuild_thumb.png",
       description: "A Resume builder that helps you to get the job faster. Built with JavaScript."
     },
     {
       title: "linked-out",
-      link: "https://github.com/Himanshucosmos/linked-out",
+      link: "https://linkedin-callout.vercel.app/",
       image: "linkedout_thumb.png",
       description: "They thought LinkedIn was Tinder. This is your response. Built with TypeScript."
     },
     {
       title: "watari",
-      link: "https://github.com/Himanshucosmos/watari",
+      link: "https://watari.vercel.app/",
       image: "watari_thumb.png",
-      description: "WATARI is a meditative web simulation where you guide a flock of birds through an endless ocean landscape. It was created out of a desire to build something quiet, reflective, and peaceful. Built with HTML & JS."
+      description: "WATARI is a meditative web simulation where you guide a flock of birds through an endless ocean landscape. Built with HTML & JS."
     },
     {
       title: "himanshu-portfolio",
-      link: "https://github.com/Himanshucosmos/himanshu-portfolio",
+      link: "https://himanshucosmos.vercel.app/",
       image: "portfolio_thumb.png",
-      description: "It's just my first version of my cringe portfolio then thought of pivoting to the better version of the portfolio with portfolio 2.0. Built with TypeScript."
+      description: "My first version of my portfolio, since pivoted to the better version with Portfolio 2.0. Built with TypeScript."
     },
     {
       title: "ai-native-news-reporting",
       link: "https://github.com/Himanshucosmos/ai-native-news-reporting",
       image: "ainews_thumb.png",
-      description: "The website that collects tech news across the internet and brings them into one place. Built with TypeScript."
+      description: "A website that collects tech news across the internet and brings them into one place. Built with TypeScript."
     }
   ],
   articles: [
