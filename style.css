@@ -872,10 +872,9 @@ main {
     display: none;
   }
 
-  /* Keep side text small on right */
+  /* Hide side text on mobile — no room */
   .side-text {
-    font-size: 9px;
-    right: 6px;
+    display: none;
   }
 
   /* Index layout collapses */
