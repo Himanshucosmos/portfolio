@@ -137,7 +137,7 @@ window.initPageData = () => {
       <div class="poem-entry" id="poem-${p.title.replace(/\s+/g, '-')}">
         <h2 class="poem-title">[ ${p.title} ]</h2>
         <div class="poem-date">${p.date}</div>
-        <div class="poem-body" style="margin-top: 20px;">
+        <div class="poem-body" style="margin-top: 12px;">
           ${body}
         </div>
       </div>

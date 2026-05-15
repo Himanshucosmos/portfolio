@@ -462,7 +462,7 @@ main {
 .poem-divider {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 40px 0;
+  margin: 24px 0;
   opacity: 0.3;
 }
 
@@ -760,65 +760,65 @@ main {
     max-width: 100%;
   }
 
-  /* Header — Match reference exactly but BIGGER */
+  /* Header — Restored Purple Aesthetic */
   header {
-    padding: 32px 0 20px; /* More vertical space */
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0;
+    padding: 20px 16px; /* Balanced padding for the background */
+    background: linear-gradient(135deg, rgba(80, 40, 120, 0.35) 0%, rgba(50, 20, 80, 0.2) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+    margin: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    box-shadow: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
   }
 
   .header-rule {
     display: block !important;
     border: none;
-    border-top: 2px solid var(--text); /* Thick line like laptop */
-    margin: 0 0 40px 0;
-    opacity: 1; /* Fully visible like laptop */
+    border-top: 2px solid var(--text);
+    margin: 0 0 24px 0; /* Reduced margin */
+    opacity: 0.8;
   }
 
   .header-left {
     display: flex;
-    gap: 16px; /* More gap */
+    gap: 12px;
     align-items: flex-start;
     flex: 1;
   }
 
   .avatar-wrap img {
-    width: 52px; /* Bigger avatar */
-    height: 52px;
-    border: none;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .header-info {
     height: auto;
-    gap: 6px;
+    gap: 2px;
     padding: 0;
     display: flex;
     flex-direction: column;
   }
 
   .site-name {
-    font-size: 1.5rem; /* Bigger name */
+    font-size: 1.3rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
     color: var(--text);
   }
 
   .header-links {
     display: flex;
     flex-direction: row; 
-    gap: 14px;
-    margin-top: 6px;
+    gap: 10px;
+    margin-top: 2px;
   }
 
   .header-links a {
-    font-size: 11px;
+    font-size: 10px;
     opacity: 0.6;
     font-weight: 400;
     text-decoration: none;
@@ -829,14 +829,14 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 6px;
+    gap: 4px;
     height: auto;
     padding: 0;
     flex-shrink: 0;
   }
 
   nav a {
-    font-size: 12px;
+    font-size: 11px;
     padding: 0;
     margin: 0;
     opacity: 0.8;
