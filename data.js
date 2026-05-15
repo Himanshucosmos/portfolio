@@ -128,18 +128,20 @@ window.initPageData = () => {
       `<a href="#poem-${p.title.replace(/\s+/g, '-')}" class="post-title">${p.title}</a>`
     ).join('\n    ');
 
-    const poems = siteData.poetry.map(p => {
+    const poems = siteData.poetry.map((p, index) => {
       const body = p.lines.map(line =>
         line === '' ? '<br>' : `<span>${line}</span>`
       ).join('\n      ');
+      const divider = index < siteData.poetry.length - 1 ? '<hr class="poem-divider" />' : '';
       return `
       <div class="poem-entry" id="poem-${p.title.replace(/\s+/g, '-')}">
-        <h2 class="poem-title">[ ${p.title} ]</h2>
+        <h2 class="poem-title" style="cursor: pointer;">[ ${p.title} ]</h2>
         <div class="poem-date">${p.date}</div>
-        <div class="poem-body">
+        <div class="poem-body" style="display: none; margin-top: 20px;">
           ${body}
         </div>
-      </div>`;
+      </div>
+      ${divider}`;
     }).join('');
 
     poetryList.innerHTML = `
@@ -151,6 +153,16 @@ window.initPageData = () => {
       </div>
       <div class="poems-list">${poems}</div>
     `;
+
+    // Add click listeners for accordion
+    poetryList.querySelectorAll('.poem-title').forEach(title => {
+      title.addEventListener('click', () => {
+        const entry = title.closest('.poem-entry');
+        const body = entry.querySelector('.poem-body');
+        const isHidden = body.style.display === 'none';
+        body.style.display = isHidden ? 'block' : 'none';
+      });
+    });
   }
 
 };

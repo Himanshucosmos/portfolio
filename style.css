@@ -459,6 +459,17 @@ main {
   display: block;
 }
 
+.poem-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+  opacity: 0.3;
+}
+
+.poem-title:hover {
+  color: var(--accent);
+}
+
 /* ─── Projects Page ─── */
 .projects-list {
   display: flex;
