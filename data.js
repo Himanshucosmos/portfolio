@@ -20,13 +20,13 @@ const siteData = {
     },
     {
       title: "himanshu-portfolio",
-      link: "https://himanshucosmos.vercel.app/",
+      link: "https://himanshu-cosmos.vercel.app/",
       image: "portfolio_thumb.png",
       description: "My first version of my portfolio, since pivoted to the better version with Portfolio 2.0. Built with TypeScript."
     },
     {
       title: "ai-native-news-reporting",
-      link: "https://github.com/Himanshucosmos/ai-native-news-reporting",
+      link: "https://ai-native-news-reporting.vercel.app/",
       image: "ainews_thumb.png",
       description: "A website that collects tech news across the internet and brings them into one place. Built with TypeScript."
     }
