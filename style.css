@@ -751,25 +751,32 @@ main {
 
   /* Header — Match reference exactly */
   header {
-    padding: 24px 8px;
-    background: none;
-    border: none;
-    margin-bottom: 32px;
+    padding: 24px 0; /* Flush with container sides */
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    box-shadow: none !important;
+  }
+
+  .header-rule {
+    display: none; /* Hide HR line like reference */
   }
 
   .header-left {
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    flex: 1; /* Push nav to the right */
+    flex: 1;
   }
 
   .avatar-wrap img {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    border: none;
   }
 
   .header-info {
@@ -781,10 +788,11 @@ main {
   }
 
   .site-name {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: -0.01em;
-    line-height: 1.2;
+    line-height: 1.1;
+    color: var(--text);
   }
 
   .header-links {
@@ -798,6 +806,7 @@ main {
     font-size: 10px;
     opacity: 0.6;
     font-weight: 400;
+    text-decoration: none;
   }
 
   /* Nav — Stacked on far right */
@@ -815,7 +824,7 @@ main {
     font-size: 11px;
     padding: 0;
     margin: 0;
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   /* Bio Text */
