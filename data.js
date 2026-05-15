@@ -92,19 +92,22 @@ window.initPageData = () => {
   // Render Projects
   const projectsList = document.getElementById('projects-container');
   if (projectsList && siteData.projects) {
-    projectsList.innerHTML = siteData.projects.map(p => `
+    projectsList.innerHTML = siteData.projects.map(p => {
+      const dateStr = p.date ? p.date : '2024-2025';
+      return `
       <div class="project-entry">
         <div class="project-info">
           <div class="project-title-line">
-            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-title">${p.title}</a>
+            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-title">[${p.title}]</a>
+            <span class="project-date">${dateStr}</span>
           </div>
           <p class="project-desc">${p.description}</p>
         </div>
         <div class="project-thumb">
           <img src="${p.image}" alt="${p.title}" />
         </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
   }
 
   // Render Articles

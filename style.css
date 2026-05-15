@@ -838,7 +838,7 @@ main {
   .side-text {
     display: block !important;
     position: fixed;
-    right: 2px; /* Pin to extreme edge */
+    right: 2px;
     top: 50%;
     transform: translateY(-50%);
     writing-mode: vertical-rl;
@@ -850,6 +850,58 @@ main {
     pointer-events: none;
     margin: 0;
     white-space: nowrap;
+  }
+
+  /* Projects List Mobile */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-entry {
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 32px 0 !important;
+  }
+
+  .project-info {
+    width: 100%;
+  }
+
+  .project-title-line {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-size: 1.1rem !important;
+    color: var(--accent) !important;
+  }
+
+  .project-date {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .project-thumb {
+    width: 100% !important;
+    margin: 0;
+  }
+
+  .project-thumb img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    border: 1px solid var(--border);
   }
 
   /* Explicitly hide GIFs and extras on mobile */
