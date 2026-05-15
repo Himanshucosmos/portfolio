@@ -744,122 +744,101 @@ main {
 
 /* ─── Responsive — Mobile ─── */
 @media (max-width: 680px) {
-  /* Container */
   .container {
-    padding: 12px 12px 60px;
+    padding: 16px 12px 60px;
     max-width: 100%;
   }
 
-  /* Header — Clean editorial look */
+  /* Header — Match reference exactly */
   header {
-    padding: 20px 12px;
-    background: none; /* Remove background for cleaner look */
-    border-bottom: 1px solid var(--text-muted);
-    border-radius: 0;
-    margin-bottom: 24px;
-    flex-wrap: nowrap;
+    padding: 24px 8px;
+    background: none;
+    border: none;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
     align-items: flex-start;
   }
 
   .header-left {
+    display: flex;
     gap: 12px;
-    flex: 1;
-    min-width: 0;
+    align-items: flex-start;
   }
 
-  /* Shrink avatar slightly more */
   .avatar-wrap img {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
   }
 
   .header-info {
     height: auto;
-    gap: 6px;
+    gap: 2px;
     padding: 0;
   }
 
   .site-name {
-    font-size: 1.4rem; /* Larger site name */
-    letter-spacing: -0.03em;
-    word-spacing: 0;
-    line-height: 1.1;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   .header-links {
-    gap: 10px;
-    flex-direction: column; /* Stack links for clarity */
+    display: flex;
+    flex-direction: row; /* Horizontal links like reference */
+    gap: 8px;
+    margin-top: 4px;
   }
 
   .header-links a {
-    font-size: 12px;
-    opacity: 0.8;
+    font-size: 11px;
+    opacity: 0.7;
+    font-weight: 400;
   }
 
-  /* Nav — aligned to top right */
+  /* Nav — Stacked on right like reference */
   nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
     height: auto;
-    gap: 6px;
-    flex-shrink: 0;
     padding: 0;
-    text-align: right;
   }
 
   nav a {
-    font-size: 12px;
-    margin-bottom: 2px;
+    font-size: 11px;
+    padding: 0;
+    margin: 0;
   }
 
-  /* HR */
-  hr {
-    border-top-width: 1px;
-    opacity: 0.2;
-  }
-
-  /* Bio text — larger and more readable */
+  /* Bio Text */
   .bio p {
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 14.5px;
+    line-height: 1.7;
     margin-bottom: 24px;
   }
 
-  /* Projects */
-  .project-entry {
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .project-thumb img {
-    height: 180px;
-  }
-
-  .project-title {
-    font-size: 18px;
-  }
-
-  .project-desc {
-    font-size: 15px;
-  }
-
-  /* Sidebar/Fullscreen hidden */
+  /* Hide extras */
   .left-sidebar, #fullscreenBtn, .music-album-art {
     display: none;
   }
 
-  /* Side Text — Pinned to extreme right edge */
+  /* Side Text — Pinned to extreme right using writing-mode */
   .side-text {
     display: block;
     position: fixed;
+    right: 4px;
     top: 50%;
-    margin: 0;
-    right: -30px; 
-    transform: translateY(-50%) rotate(90deg);
-    font-size: 9px;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl; /* True vertical text */
+    text-orientation: mixed;
+    font-size: 10px;
     opacity: 0.3;
-    z-index: 1000;
-    letter-spacing: 0.15em;
-    color: var(--text);
+    z-index: 2000;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    margin: 0;
   }
 
   /* Layout */
