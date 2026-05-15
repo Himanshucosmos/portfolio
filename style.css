@@ -51,9 +51,12 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
-  overflow-x: clip;
+  overflow-x: hidden; /* Prevent horizontal jitter */
   animation: fadeUp 0.45s ease both;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling on orientation change */
+  display: flex;
+  flex-direction: column;
 }
 
 /* ─── Animated underline for body links ─── */
@@ -754,7 +757,11 @@ main {
 }
 
 /* ─── Responsive — Mobile ─── */
-@media (max-width: 680px) {
+@media (max-width: 768px) {
+  :root {
+    --max-width: 100%;
+  }
+
   .container {
     padding: 16px 12px 60px;
     max-width: 100%;
@@ -865,6 +872,8 @@ main {
     pointer-events: none;
     margin: 0;
     white-space: nowrap;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Projects List Mobile */
