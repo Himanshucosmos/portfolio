@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kBase — Himanshu Sharma</title>
+  <meta name="description" content="Knowledge base and bookmarks." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .link-list li {
+      margin-bottom: 12px;
+    }
+    .link-list a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .link-list a:hover {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+  <span class="side-text">Per Aspera, Ad Astra</span>
+
+  <div class="container">
+
+    <header>
+      <div class="header-left">
+        <div class="avatar-wrap" id="themeToggle" title="click to change theme">
+          <img src="avatar.png" alt="avatar" />
+        </div>
+        <div class="header-info">
+          <a href="index.html" class="site-name">Himanshu Sharma</a>
+          <div class="header-links">
+            <a href="https://github.com/Himanshucosmos" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:himanshu.resilience@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/himanshucosmos/" target="_blank" rel="noopener">LinkedIn</a>
+            
+            <a href="resume.html">Resume</a>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">[About]</a>
+        <a href="projects.html">[Projects]</a>
+        <a href="articles.html">[Articles]</a>
+        <a href="poetry.html">[Poetry]</a>
+      </nav>
+    </header>
+
+    <hr class="header-rule" />
+
+    <main>
+      <ul class="link-list">
+        <li><a href="https://www.allaboutcircuits.com/projects/">All About Circuits</a> Everything regarding electronics</li>
+        <li><a href="https://googleprojectzero.blogspot.com/2019/02/examining-pointer-authentication-on.html">Google Project Zero</a> Pointer Authentication on the iPhone XS</li>
+        <li><a href="https://www.jmeiners.com/lc3-vm/">jmeiners.com</a> Write your Own Virtual Machine</li>
+        <li><a href="https://quest-lab.cs.wisc.edu/guides/index.html">Quest Lab</a> Computer Systems Guides</li>
+        <li><a href="https://en.algorithmica.org/hpc/">Algorithmica</a> Algorithms for Modern Hardware</li>
+        <li><a href="https://p.ost2.fyi/courses">OST2</a> Computer Architecture & Malware Analysis</li>
+        <li><a href="https://mikeash.com/pyblog/friday-qa-2017-06-30-dissecting-objc_msgsend-on-arm64.html">mikeash.com</a> Dissecting objc_msgSend on ARM64</li>
+        <li><a href="https://www.makingsoftware.com/chapters/color-spaces-models-and-gamuts">Making Software</a> Such a masterpiece...</li>
+        <li><a href="https://ml-site.cdn-apple.com/papers/the-illusion-of-thinking.pdf">Apple ML Site</a> The Illusion of Thinking (PDF)</li>
+        <li><a href="https://tams.informatik.uni-hamburg.de/applets/hades/webdemos/40-memories/20-rom/demo-ROM1Kx8.html">Hamburg TAMS</a> ROM Memory Demo - HADES</li>
+        <li><a href="https://hdlbits.01xz.net/wiki/Problem_sets#Combinational_Logic">HDLBits</a> Verilog Practice Problems</li>
+      </ul>
+    </main>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="theme.js"></script>
+</body>
+</html>

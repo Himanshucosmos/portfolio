@@ -1,0 +1,848 @@
+/* ─── CSS Variables ─── */
+:root {
+  --bg: #111111;
+  --bg-glow: radial-gradient(ellipse 80% 40% at 50% 110%, rgba(60, 90, 180, 0.18) 0%, transparent 70%);
+  --text: #cccccc;
+  --text-muted: #777777;
+  --accent: #6895d2;
+  --accent-hover: #89b4f0;
+  --border: rgba(255, 255, 255, 0.12);
+  --font-main: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --max-width: 730px;
+  --transition: 0.35s ease;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-glow: none;
+  --text: #111111;
+  --text-muted: #555555;
+  --accent: #4a72c4;
+  --accent-hover: #2e55a8;
+  --border: rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Page fade-in ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  background-color: var(--bg);
+  background-image: var(--bg-glow);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: clip;
+  animation: fadeUp 0.45s ease both;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Animated underline for body links ─── */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ─── Blinking cursor ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid var(--text);
+  margin: 0;
+  transition: border-color var(--transition);
+}
+
+/* ─── Layout Container ─── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+/* ─── Header ─── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px;
+  padding-bottom: 20px;
+  background: linear-gradient(135deg, rgba(80, 40, 120, 0.35) 0%, rgba(50, 20, 80, 0.2) 100%);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.header-left {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.avatar-wrap {
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.avatar-wrap img {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(0.1);
+  border: 1px solid var(--text);
+  transition: filter var(--transition), border-color var(--transition);
+}
+
+.avatar-wrap:hover img {
+  filter: grayscale(0) brightness(1.05);
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 76px;
+  padding: 4px 0;
+}
+
+.site-name {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  word-spacing: -0.25em;
+  line-height: 1.1;
+  transition: color var(--transition);
+}
+
+.header-links {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+.header-links a {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity var(--transition), color var(--transition);
+}
+
+/* override the slide-underline for header links */
+.header-links a::after { display: none; }
+
+.header-links a:hover {
+  opacity: 1;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ─── Navigation ─── */
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 76px;
+  padding: 4px 0;
+}
+
+nav a {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity var(--transition), color var(--transition);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+
+/* override slide-underline for nav links */
+nav a::after { display: none; }
+
+nav a:hover {
+  opacity: 1;
+  color: var(--text);
+}
+
+/* Active nav item: swap brackets for › prefix */
+nav a.active {
+  opacity: 1;
+  color: var(--text);
+}
+
+nav a.active::before {
+  content: '› ';
+  color: var(--accent);
+}
+
+/* ─── Divider below header ─── */
+.header-rule {
+  margin-bottom: 40px;
+}
+
+/* ─── Floating Avatar (Index only) ─── */
+.floating-avatar {
+  position: absolute;
+  left: -80px;
+  top: 60px;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease, filter var(--transition);
+}
+
+@media (max-width: 900px) {
+  .floating-avatar {
+    position: static;
+    margin-bottom: 30px;
+  }
+}
+
+.floating-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(1.2);
+  transition: filter var(--transition);
+}
+
+.floating-avatar:hover {
+  transform: scale(1.03);
+}
+
+[data-theme="light"] .floating-avatar img {
+  filter: grayscale(0%) sepia(10%);
+}
+
+/* ─── Main Content ─── */
+main {
+  min-height: 60vh;
+}
+
+/* ─── Bio Text (Index only) ─── */
+.bio p {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 24px;
+  text-align: justify;
+  transition: color var(--transition);
+  font-weight: 600;
+}
+
+.bio a {
+  color: var(--accent);
+}
+
+/* ─── Bottom Links (kBase, log, reminders) ─── */
+.bottom-links {
+  display: flex;
+  gap: 24px;
+  margin: 48px 0 0;
+}
+
+.bottom-links a {
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color var(--transition);
+  font-weight: 600;
+}
+
+.bottom-links a:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ─── Music Section ─── */
+.music-section {
+  margin-top: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.music-section[style*="display: none"] {
+  opacity: 0;
+}
+
+/* ─── Link List (used by /log, /reminders, /kbase) ─── */
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+.link-list li {
+  margin-bottom: 8px;
+}
+
+.link-list li::before {
+  content: "- ";
+}
+
+.link-list a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.link-list a:hover {
+  color: var(--text);
+}
+
+/* Reminders variant — bullet points with more spacing */
+.link-list.reminders-list li {
+  margin-bottom: 28px;
+  padding-left: 20px;
+  text-indent: -20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.link-list.reminders-list li::before {
+  content: "• ";
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* ─── Fullscreen Button ─── */
+#fullscreenBtn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 6px;
+  opacity: 0.5;
+  transition: opacity var(--transition), color var(--transition);
+  line-height: 0;
+}
+
+#fullscreenBtn:hover {
+  opacity: 1;
+  color: var(--text);
+}
+
+.music-toggle {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color var(--transition);
+  display: inline-block;
+}
+
+.music-toggle:hover {
+  color: var(--text);
+}
+
+.music-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.music-link:hover {
+  color: var(--text);
+}
+
+/* ─── Music Album Art (left margin) ─── */
+.music-album-art {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+
+.music-album-art.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.music-album-art img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Projects Page ─── */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.project-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-entry:first-child {
+  padding-top: 0;
+}
+
+.project-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.project-title:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.project-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  transition: color var(--transition);
+}
+
+.project-desc {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--text);
+  font-family: var(--font-mono);
+  opacity: 0.85;
+  transition: color var(--transition);
+}
+
+.project-thumb {
+  flex-shrink: 0;
+  width: 155px;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+  transition: filter var(--transition);
+}
+
+.project-thumb img:hover {
+  filter: brightness(1);
+}
+
+/* ─── Articles & Poetry Pages ─── */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.post-entry {
+  padding: 24px 0;
+}
+
+.post-entry:first-child {
+  padding-top: 0;
+}
+
+.post-title {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color var(--transition);
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.post-title:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.post-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.post-excerpt {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.85;
+  transition: color var(--transition);
+}
+
+/* ─── Article / Poem Single View ─── */
+.article-header {
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color var(--transition);
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.article-title {
+  font-family: var(--font-mono);
+  font-size: 1.8em;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.article-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.article-body p {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 28px;
+  transition: color var(--transition);
+}
+
+/* ─── Right Edge Vertical Text ─── */
+.side-text {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: color var(--transition);
+  writing-mode: horizontal-tb;
+  /* shift it to the right edge visually */
+  margin-right: -40px;
+}
+
+/* ─── Poetry page ─── */
+.poetry-archive {
+  margin-bottom: 48px;
+}
+
+.archive-heading {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.archive-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.archive-links a {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.archive-links a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.poetry-disclaimer {
+  margin-top: 80px;
+  padding: 12px 16px;
+  border: 1px solid var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.poetry-disclaimer strong {
+  font-weight: 700;
+}
+
+.poems-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.poem-entry {
+  text-align: center;
+}
+
+.poem-title {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.poem-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.poem-body {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 2;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 680px) {
+  header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  nav {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .site-name {
+    font-size: 1.5rem;
+  }
+
+  .music-album-art {
+    display: none;
+  }
+
+  .project-entry {
+    flex-direction: column;
+  }
+
+  .project-thumb {
+    width: 100%;
+  }
+
+  .project-thumb img {
+    height: 140px;
+  }
+
+  /* Hide GIF sidebar and fullscreen btn on mobile */
+  .left-sidebar {
+    display: none;
+  }
+
+  #fullscreenBtn {
+    display: none;
+  }
+
+  /* Keep side text but make it smaller */
+  .side-text {
+    font-size: 9px;
+    right: 8px;
+  }
+
+  /* Tighten container padding */
+  .container {
+    padding: 20px 16px 60px;
+  }
+
+  /* Stack poem archive links */
+  .archive-links {
+    gap: 10px;
+  }
+
+  /* Make poetry centered look good on small screens */
+  .poem-body {
+    font-size: 14px;
+  }
+}
+
+/* ─── Hidden Hover Zones (Left Side) Sticky Track ─── */
+.index-layout {
+  display: grid;
+  grid-template-columns: 1fr var(--max-width) 1fr;
+  align-items: start;
+}
+
+.index-layout .container {
+  grid-column: 2;
+  margin: 0;
+}
+
+.left-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  padding-top: 8vh;
+  padding-left: 16px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.hidden-zone {
+  position: relative;
+  width: 280px;
+  height: 150px;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: auto;
+}
+
+.hidden-zone:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hidden-zone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: none;
+}
