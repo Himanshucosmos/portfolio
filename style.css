@@ -764,6 +764,7 @@ main {
     display: flex;
     gap: 12px;
     align-items: flex-start;
+    flex: 1; /* Push nav to the right */
   }
 
   .avatar-wrap img {
@@ -773,30 +774,33 @@ main {
 
   .header-info {
     height: auto;
-    gap: 2px;
+    gap: 4px;
     padding: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .site-name {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.01em;
+    line-height: 1.2;
   }
 
   .header-links {
     display: flex;
-    flex-direction: row; /* Horizontal links like reference */
-    gap: 8px;
-    margin-top: 4px;
+    flex-direction: row; 
+    gap: 10px;
+    margin-top: 2px;
   }
 
   .header-links a {
-    font-size: 11px;
-    opacity: 0.7;
+    font-size: 10px;
+    opacity: 0.6;
     font-weight: 400;
   }
 
-  /* Nav — Stacked on right like reference */
+  /* Nav — Stacked on far right */
   nav {
     display: flex;
     flex-direction: column;
@@ -804,41 +808,44 @@ main {
     gap: 4px;
     height: auto;
     padding: 0;
+    flex-shrink: 0;
   }
 
   nav a {
     font-size: 11px;
     padding: 0;
     margin: 0;
+    opacity: 0.9;
   }
 
   /* Bio Text */
   .bio p {
-    font-size: 14.5px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
     margin-bottom: 24px;
   }
 
-  /* Hide extras */
-  .left-sidebar, #fullscreenBtn, .music-album-art {
-    display: none;
-  }
-
-  /* Side Text — Pinned to extreme right using writing-mode */
+  /* Side Text — Vertical on extreme right edge */
   .side-text {
-    display: block;
+    display: block !important;
     position: fixed;
-    right: 4px;
+    right: 2px; /* Pin to extreme edge */
     top: 50%;
     transform: translateY(-50%);
-    writing-mode: vertical-rl; /* True vertical text */
+    writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 10px;
-    opacity: 0.3;
+    font-size: 9px;
+    opacity: 0.25;
     z-index: 2000;
     letter-spacing: 0.1em;
     pointer-events: none;
     margin: 0;
+    white-space: nowrap;
+  }
+
+  /* Explicitly hide GIFs and extras on mobile */
+  .left-sidebar, #fullscreenBtn, .music-album-art, .hidden-zone {
+    display: none !important;
   }
 
   /* Layout */
