@@ -746,142 +746,123 @@ main {
 @media (max-width: 680px) {
   /* Container */
   .container {
-    padding: 16px 16px 60px;
+    padding: 12px 12px 60px;
+    max-width: 100%;
   }
 
-  /* Header — keep two columns but compress */
+  /* Header — Clean editorial look */
   header {
-    padding: 14px 14px;
-    gap: 10px;
+    padding: 20px 12px;
+    background: none; /* Remove background for cleaner look */
+    border-bottom: 1px solid var(--text-muted);
+    border-radius: 0;
+    margin-bottom: 24px;
     flex-wrap: nowrap;
     align-items: flex-start;
   }
 
   .header-left {
-    gap: 10px;
+    gap: 12px;
     flex: 1;
     min-width: 0;
   }
 
-  /* Smaller avatar */
+  /* Shrink avatar slightly more */
   .avatar-wrap img {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
   .header-info {
     height: auto;
-    gap: 4px;
+    gap: 6px;
     padding: 0;
   }
 
   .site-name {
-    font-size: 1.1rem;
-    letter-spacing: -0.02em;
+    font-size: 1.4rem; /* Larger site name */
+    letter-spacing: -0.03em;
     word-spacing: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.1;
   }
 
   .header-links {
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column; /* Stack links for clarity */
   }
 
   .header-links a {
-    font-size: 11.5px;
+    font-size: 12px;
+    opacity: 0.8;
   }
 
-  /* Nav — keep column stack on right */
+  /* Nav — aligned to top right */
   nav {
     height: auto;
-    gap: 4px;
+    gap: 6px;
     flex-shrink: 0;
     padding: 0;
+    text-align: right;
   }
 
   nav a {
-    font-size: 11.5px;
+    font-size: 12px;
+    margin-bottom: 2px;
   }
 
   /* HR */
   hr {
     border-top-width: 1px;
+    opacity: 0.2;
   }
 
-  /* Bio text */
+  /* Bio text — larger and more readable */
   .bio p {
-    font-size: 13.5px;
-    line-height: 1.75;
-  }
-
-  /* Bottom links */
-  .bottom-links {
-    gap: 12px;
-    flex-wrap: wrap;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 24px;
   }
 
   /* Projects */
   .project-entry {
     flex-direction: column;
-    gap: 12px;
-  }
-
-  .project-thumb {
-    width: 100%;
+    gap: 16px;
+    margin-bottom: 40px;
   }
 
   .project-thumb img {
-    height: 160px;
+    height: 180px;
   }
 
   .project-title {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .project-desc {
-    font-size: 14px;
-  }
-
-  /* Articles/Poetry list */
-  .post-title {
-    font-size: 17px;
-  }
-
-  /* Poetry */
-  .poem-title {
     font-size: 15px;
   }
 
-  .poem-body {
-    font-size: 13px;
-  }
-
-  /* Music */
-  .music-album-art {
+  /* Sidebar/Fullscreen hidden */
+  .left-sidebar, #fullscreenBtn, .music-album-art {
     display: none;
   }
 
-  /* Hide extras */
-  .left-sidebar {
-    display: none;
-  }
-
-  #fullscreenBtn {
-    display: none;
-  }
-
-  /* Show side text on mobile — floating above on the right edge */
+  /* Side Text — Pinned to extreme right edge */
   .side-text {
     display: block;
-    font-size: 8px;
-    right: -32px; /* Pull it slightly more to the edge */
-    opacity: 0.4;
+    position: fixed;
+    top: 50%;
+    margin: 0;
+    right: -30px; 
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 9px;
+    opacity: 0.3;
     z-index: 1000;
+    letter-spacing: 0.15em;
+    color: var(--text);
   }
 
-  /* Index layout collapses */
+  /* Layout */
   .index-layout {
     display: block;
   }
