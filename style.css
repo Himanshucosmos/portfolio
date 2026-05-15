@@ -751,11 +751,11 @@ main {
 
   /* Header — Match reference exactly */
   header {
-    padding: 24px 0; /* Flush with container sides */
+    padding: 24px 0 16px; /* Flush with sides, space below */
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
-    margin-bottom: 24px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -763,7 +763,11 @@ main {
   }
 
   .header-rule {
-    display: none; /* Hide HR line like reference */
+    display: block !important;
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 32px 0;
+    opacity: 0.4;
   }
 
   .header-left {
@@ -774,8 +778,8 @@ main {
   }
 
   .avatar-wrap img {
-    width: 48px;
-    height: 48px;
+    width: 44px; /* Smaller avatar like reference */
+    height: 44px;
     border: none;
   }
 
@@ -788,23 +792,23 @@ main {
   }
 
   .site-name {
-    font-size: 1.3rem;
+    font-size: 1.4rem; /* Prominent name */
     font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
+    letter-spacing: -0.02em;
+    line-height: 1;
     color: var(--text);
   }
 
   .header-links {
     display: flex;
     flex-direction: row; 
-    gap: 10px;
-    margin-top: 2px;
+    gap: 12px;
+    margin-top: 4px;
   }
 
   .header-links a {
     font-size: 10px;
-    opacity: 0.6;
+    opacity: 0.5;
     font-weight: 400;
     text-decoration: none;
   }
